@@ -11,6 +11,7 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder "install-jenkins", "/home/install-jenkins"
   config.vm.provision "shell", path: "./install-jenkins/provision.sh", privileged: false # for testing manual installation
   config.vm.provision "ansible" do |ansible|
+    ansible.limit = "all"
     ansible.playbook = "install-jenkins.yml"
    end
 end
